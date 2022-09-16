@@ -34,12 +34,14 @@ class _NewslistState extends State<Newslist>with AutomaticKeepAliveClientMixin {
                 itemCount: snapshot.data.length,
                 scrollDirection: Axis.vertical,itemBuilder: (context,index){
               return Column(
+
+
                 children: [
                   SizedBox(height: 20.0,),
                   Row(
                     children: [
-                      Expanded(
-                        flex: 1,
+                      Flexible(
+                        //flex: 2,
                         child: GestureDetector(
                             onTap: (){
                               setState(() {
@@ -59,7 +61,7 @@ class _NewslistState extends State<Newslist>with AutomaticKeepAliveClientMixin {
                               padding: const EdgeInsets.all(8.0),
                               child: Container(
                                 height: 80.0,
-                                width: 20.0,
+                                width: MediaQuery.of(context).size.width*0.3,
                                 child: ClipRRect(
 
                                     borderRadius: BorderRadius.circular(18.0),
@@ -69,27 +71,25 @@ class _NewslistState extends State<Newslist>with AutomaticKeepAliveClientMixin {
 
                             ),
 
-                      Expanded(
+                      Flexible(
                         flex: 2,
+                       // flex: 2,
                         child: Padding(
                           padding: const EdgeInsets.only(left: 12.0,right: 16.0),
                           child: Column(
                             children: [
                               Text(snapshot.data[index].title,style: TextStyle(color: Colors.black,fontSize: 16.0,fontWeight:  FontWeight.w600),),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Row(
-                                children: [
-                                  Icon(CupertinoIcons.clock,color: Colors.grey,),
-                                  SizedBox(width: 1.0,),
-                                  Text(generateRandomNumber(12).toString()+' hours ago',style: TextStyle(color: Colors.grey),),
-                                  SizedBox(width: 20.0,),
+                            Row(
+                              children: [
+                                Icon(CupertinoIcons.clock,color: Colors.grey,),
+                                SizedBox(width: 1.0,),
+                                Text(generateRandomNumber(12).toString()+' hours ago',style: TextStyle(color: Colors.grey),),
+                                SizedBox(width: 10.0,),
 
-                                  Icon(CupertinoIcons.eye,color: Colors.grey,),
-                                  SizedBox(width: 1.0,),
-                                  Text( generateRandomNumber(500).toString()+" views",style: TextStyle(color: Colors.grey),),
-                                ],
-                              ),
+                                Icon(CupertinoIcons.eye,color: Colors.grey,),
+                                SizedBox(width: 1.0,),
+                                Text( generateRandomNumber(500).toString()+" views",style: TextStyle(color: Colors.grey),),
+                              ],
                             ),
 
                             ],
